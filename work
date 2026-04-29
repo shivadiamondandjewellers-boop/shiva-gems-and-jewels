@@ -27,6 +27,8 @@
   .nav-cta { background: transparent; border: 1px solid var(--rose-gold); color: var(--rose-gold) !important; padding: 8px 22px; font-size: 10px !important; letter-spacing: 2px !important; cursor: pointer; transition: all 0.3s !important; text-decoration: none; display: inline-block; }
   .nav-cta:hover { background: var(--rose-gold) !important; color: var(--deep-plum) !important; }
   .hero { min-height: 100vh; background: var(--deep-plum); display: grid; grid-template-columns: 1fr 1fr; align-items: center; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; top: -200px; right: -200px; width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(201,151,122,0.08) 0%, transparent 70%); pointer-events: none; }
+  .hero::after { content: ''; position: absolute; bottom: -100px; left: 30%; width: 400px; height: 400px; border-radius: 50%; background: radial-gradient(circle, rgba(201,151,122,0.05) 0%, transparent 70%); pointer-events: none; }
   .hero-left { padding: 120px 60px 80px 80px; position: relative; z-index: 2; }
   .hero-tag { font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: var(--rose-gold); margin-bottom: 28px; display: flex; align-items: center; gap: 12px; }
   .hero-tag::before { content: ''; display: block; width: 40px; height: 1px; background: var(--rose-gold); }
@@ -42,6 +44,7 @@
   .hero-right { display: flex; align-items: center; justify-content: center; padding: 120px 80px 80px 20px; position: relative; }
   .hero-logo-frame { position: relative; display: flex; align-items: center; justify-content: center; }
   .hero-logo-frame::before { content: ''; position: absolute; width: 380px; height: 380px; border: 1px solid var(--border); border-radius: 50%; }
+  .hero-logo-frame::after { content: ''; position: absolute; width: 320px; height: 320px; border: 1px solid rgba(201,151,122,0.15); border-radius: 50%; }
   .hero-logo-img { width: 260px; height: 260px; object-fit: contain; position: relative; z-index: 2; filter: drop-shadow(0 0 40px rgba(201,151,122,0.2)); animation: float 6s ease-in-out infinite; }
   @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
   .hero-stats { position: absolute; bottom: 80px; left: 80px; display: flex; gap: 60px; }
@@ -58,31 +61,80 @@
   .section-eyebrow::before { content: ''; display: block; width: 30px; height: 1px; background: var(--rose-gold); }
   .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(36px, 4vw, 56px); font-weight: 300; line-height: 1.15; color: var(--charcoal); margin-bottom: 24px; }
   .section-title em { font-style: italic; color: var(--rose-gold); }
+  .collections { background: var(--cream); }
+  .collections-header { text-align: center; margin-bottom: 70px; }
+  .collections-header .section-eyebrow { justify-content: center; }
+  .collections-header .section-eyebrow::before { display: none; }
   .collections-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; }
   .collection-card { position: relative; overflow: hidden; cursor: pointer; background: var(--deep-plum); }
   .collection-card:first-child { grid-column: span 2; grid-row: span 2; }
-  .collection-img-placeholder { width: 100%; aspect-ratio: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; background: linear-gradient(135deg, var(--deep-plum) 0%, #3d1240 100%); }
-  .collection-overlay { position: absolute; bottom: 0; left: 0; right: 0; padding: 30px 28px; background: linear-gradient(transparent, rgba(20,5,22,0.9)); }
-  .collection-name { font-family: 'Cormorant Garamond', serif; font-size: 22px; color: #fff; }
-  .collection-tag { font-size: 10px; color: var(--rose-gold); text-transform: uppercase; letter-spacing: 2px; }
-  .about-strip { background: var(--deep-plum); display: grid; grid-template-columns: 1fr 1fr; }
-  .about-left { padding: 100px 80px; color: #fff; }
-  .about-desc { font-size: 14px; line-height: 2; color: rgba(232,196,176,0.7); margin-bottom: 40px; }
-  .visit-info { display: flex; justify-content: center; gap: 80px; flex-wrap: wrap; margin: 40px 0; }
-  .info-label { font-size: 10px; color: var(--rose-gold); letter-spacing: 3px; text-transform: uppercase; }
-  .info-value { font-family: 'Cormorant Garamond', serif; font-size: 18px; color: var(--charcoal); }
-  .btn-dark { background: var(--deep-plum); color: var(--rose-gold); padding: 16px 44px; text-decoration: none; text-transform: uppercase; font-size: 11px; letter-spacing: 2px; display: inline-block; }
-  footer { background: var(--charcoal); color: #fff; padding: 60px 80px; text-align: center; }
-  .fade-up { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+  .collection-img-placeholder { width: 100%; aspect-ratio: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94); background: linear-gradient(135deg, var(--deep-plum) 0%, #3d1240 100%); position: relative; overflow: hidden; }
+  .collection-card:first-child .collection-img-placeholder { aspect-ratio: auto; height: 100%; min-height: 500px; }
+  .collection-img-placeholder::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 30% 40%, rgba(201,151,122,0.12) 0%, transparent 60%); }
+  .collection-icon { font-size: 40px; opacity: 0.6; position: relative; z-index: 1; }
+  .collection-card:first-child .collection-icon { font-size: 64px; }
+  .collection-placeholder-text { font-family: 'Cormorant Garamond', serif; font-size: 12px; color: rgba(201,151,122,0.5); letter-spacing: 2px; text-transform: uppercase; position: relative; z-index: 1; }
+  .collection-card:hover .collection-img-placeholder { transform: scale(1.04); }
+  .collection-overlay { position: absolute; bottom: 0; left: 0; right: 0; padding: 30px 28px; background: linear-gradient(transparent, rgba(20,5,22,0.9)); transform: translateY(8px); transition: transform 0.4s; }
+  .collection-card:hover .collection-overlay { transform: translateY(0); }
+  .collection-name { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400; color: #fff; margin-bottom: 4px; }
+  .collection-tag { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--rose-gold); }
+  .about-strip { background: var(--deep-plum); display: grid; grid-template-columns: 1fr 1fr; gap: 0; padding: 0; align-items: stretch; }
+  .about-left { padding: 100px 80px; position: relative; }
+  .about-left .section-title { color: #fff; }
+  .about-desc { font-size: 14px; line-height: 2; color: rgba(232,196,176,0.7); font-weight: 300; margin-bottom: 40px; max-width: 440px; }
+  .about-pillars { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 50px; }
+  .pillar { border-top: 1px solid var(--border); padding-top: 20px; }
+  .pillar-title { font-family: 'Cormorant Garamond', serif; font-size: 18px; color: var(--rose-gold); margin-bottom: 8px; font-weight: 400; }
+  .pillar-text { font-size: 12px; color: rgba(232,196,176,0.6); line-height: 1.8; font-weight: 300; }
+  .about-right { background: linear-gradient(135deg, #3d1240 0%, #1a0820 100%); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; min-height: 500px; }
+  .about-right::before { content: ''; position: absolute; width: 400px; height: 400px; border: 1px solid var(--border); border-radius: 50%; top: 50%; left: 50%; transform: translate(-50%, -50%); }
+  .about-right-content { position: relative; z-index: 2; text-align: center; padding: 60px; }
+  .about-quote { font-family: 'Cormorant Garamond', serif; font-size: 28px; font-style: italic; color: var(--rose-light); line-height: 1.6; font-weight: 300; margin-bottom: 20px; }
+  .about-quote-attr { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: var(--rose-gold); opacity: 0.8; }
+  .visit-cta { background: var(--cream); text-align: center; position: relative; }
+  .visit-cta::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 1px; height: 60px; background: var(--border-strong); }
+  .visit-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(42px, 5vw, 72px); font-weight: 300; line-height: 1.1; margin-bottom: 24px; }
+  .visit-title em { font-style: italic; color: var(--rose-gold); }
+  .visit-desc { font-size: 14px; color: var(--mid-gray); max-width: 480px; margin: 0 auto 50px; line-height: 2; font-weight: 300; }
+  .visit-info { display: flex; justify-content: center; gap: 80px; margin-bottom: 50px; flex-wrap: wrap; }
+  .visit-info-item { text-align: center; }
+  .info-label { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--rose-gold); margin-bottom: 8px; }
+  .info-value { font-family: 'Cormorant Garamond', serif; font-size: 18px; color: var(--charcoal); font-weight: 400; }
+  .info-value a { color: var(--charcoal); text-decoration: none; }
+  .info-value a:hover { color: var(--rose-gold); }
+  .cta-group { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; }
+  .btn-dark { background: var(--deep-plum); color: var(--rose-gold); border: 1px solid var(--deep-plum); padding: 16px 44px; font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; font-weight: 500; cursor: pointer; transition: all 0.3s; text-decoration: none; display: inline-block; font-family: 'Montserrat', sans-serif; }
+  .btn-dark:hover { background: var(--charcoal); }
+  .btn-outline-dark { background: transparent; color: var(--deep-plum); border: 1px solid var(--deep-plum); padding: 16px 44px; font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; font-weight: 500; cursor: pointer; transition: all 0.3s; text-decoration: none; display: inline-block; font-family: 'Montserrat', sans-serif; }
+  .btn-outline-dark:hover { background: var(--deep-plum); color: var(--rose-gold); }
+  footer { background: var(--charcoal); padding: 60px 80px 40px; }
+  .footer-top { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 80px; margin-bottom: 50px; padding-bottom: 50px; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .footer-brand { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 600; color: var(--rose-gold); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 16px; }
+  .footer-tagline { font-size: 12px; color: rgba(255,255,255,0.4); line-height: 1.9; font-weight: 300; max-width: 280px; }
+  .footer-heading { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--rose-gold); margin-bottom: 20px; }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-links a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 12px; font-weight: 300; transition: color 0.3s; }
+  .footer-links a:hover { color: var(--rose-gold); }
+  .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+  .footer-copy { font-size: 11px; color: rgba(255,255,255,0.25); font-weight: 300; }
+  .footer-social { display: flex; gap: 20px; }
+  .social-link { width: 36px; height: 36px; border: 1px solid rgba(201,151,122,0.3); display: flex; align-items: center; justify-content: center; color: var(--rose-gold); text-decoration: none; font-size: 12px; font-weight: 500; transition: all 0.3s; font-family: 'Montserrat', sans-serif; }
+  .social-link:hover { background: var(--rose-gold); color: var(--deep-plum); border-color: var(--rose-gold); }
+  .fade-up { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease, transform 0.8s ease; }
   .fade-up.visible { opacity: 1; transform: translateY(0); }
   @media (max-width: 900px) {
-    nav { padding: 18px 20px; }
+    nav { padding: 16px 24px; }
     .nav-links { display: none; }
     .hero { grid-template-columns: 1fr; }
     .hero-right { display: none; }
-    .hero-left { padding: 120px 20px 60px; }
-    section { padding: 60px 20px; }
+    .hero-left { padding: 120px 24px 60px; }
+    .hero-stats { left: 24px; gap: 30px; }
+    .collections-grid { grid-template-columns: 1fr 1fr; }
+    .collection-card:first-child { grid-column: span 2; }
+    section { padding: 70px 24px; }
     .about-strip { grid-template-columns: 1fr; }
+    .footer-top { grid-template-columns: 1fr; gap: 40px; }
   }
 </style>
 </head>
@@ -93,7 +145,7 @@
     <li><a href="#collections">Collections</a></li>
     <li><a href="#about">Our Story</a></li>
     <li><a href="#visit">Visit Us</a></li>
-    <li><a href="https://wa.me/919811076800" class="nav-cta">WhatsApp Us</a></li>
+    <li><a href="#visit" class="nav-cta">Book a Visit</a></li>
   </ul>
 </nav>
 
@@ -105,12 +157,13 @@
     <p class="hero-desc">From rare solitaire diamonds to handcrafted bridal sets — every piece at Shiva Gems & Jewels is selected for brilliance, purity, and lasting beauty.</p>
     <div class="hero-actions">
       <a href="#collections" class="btn-primary">Explore Collections</a>
-      <a href="https://wa.me/919811076800" class="btn-ghost">Chat with an Expert</a>
+      <a href="#visit" class="btn-ghost">Visit Our Store</a>
     </div>
   </div>
   <div class="hero-right">
     <div class="hero-logo-frame">
-      <div style="color: var(--rose-gold); font-family: 'Cormorant Garamond'; font-size: 40px; text-align: center; border: 1px solid var(--border); padding: 40px; border-radius: 50%;">SHIVA</div>
+      <!-- Replace src with your logo path in WordPress -->
+      <img src="https://yoursite.com/wp-content/uploads/2025/04/LOgo.png" alt="Shiva Gems and Jewels" class="hero-logo-img">
     </div>
   </div>
   <div class="hero-stats">
@@ -125,66 +178,150 @@
     <span class="marquee-item">Diamond Jewellery <span class="marquee-dot"></span></span>
     <span class="marquee-item">Bridal Collections <span class="marquee-dot"></span></span>
     <span class="marquee-item">Gold Jewellery <span class="marquee-dot"></span></span>
-    <span class="marquee-item">Custom Bespoke <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Custom Bespoke Pieces <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Certified Solitaires <span class="marquee-dot"></span></span>
     <span class="marquee-item">Karol Bagh, Delhi <span class="marquee-dot"></span></span>
     <span class="marquee-item">Diamond Jewellery <span class="marquee-dot"></span></span>
     <span class="marquee-item">Bridal Collections <span class="marquee-dot"></span></span>
     <span class="marquee-item">Gold Jewellery <span class="marquee-dot"></span></span>
-    <span class="marquee-item">Custom Bespoke <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Custom Bespoke Pieces <span class="marquee-dot"></span></span>
+    <span class="marquee-item">Certified Solitaires <span class="marquee-dot"></span></span>
     <span class="marquee-item">Karol Bagh, Delhi <span class="marquee-dot"></span></span>
   </div>
 </div>
 
 <section class="collections" id="collections">
-  <div class="fade-up" style="text-align: center; margin-bottom: 60px;">
-    <div class="section-eyebrow" style="justify-content: center;">Our Collections</div>
+  <div class="collections-header fade-up">
+    <div class="section-eyebrow">Our Collections</div>
     <h2 class="section-title">Crafted for <em>Every Moment</em></h2>
   </div>
   <div class="collections-grid fade-up">
     <div class="collection-card">
-      <div class="collection-img-placeholder">💎</div>
-      <div class="collection-overlay"><div class="collection-name">Bridal Sets</div><div class="collection-tag">Exquisite Designs</div></div>
+      <div class="collection-img-placeholder">
+        <div class="collection-icon">💎</div>
+        <div class="collection-placeholder-text">Add your bridal image here</div>
+      </div>
+      <div class="collection-overlay">
+        <div class="collection-name">Bridal Jewellery</div>
+        <div class="collection-tag">Diamond & Gold Sets</div>
+      </div>
     </div>
     <div class="collection-card">
-      <div class="collection-img-placeholder">✦</div>
-      <div class="collection-overlay"><div class="collection-name">Solitaires</div><div class="collection-tag">Rare & Certified</div></div>
+      <div class="collection-img-placeholder">
+        <div class="collection-icon">✦</div>
+        <div class="collection-placeholder-text">Add diamond image</div>
+      </div>
+      <div class="collection-overlay">
+        <div class="collection-name">Diamond Solitaires</div>
+        <div class="collection-tag">Certified & Rare</div>
+      </div>
     </div>
     <div class="collection-card">
-      <div class="collection-img-placeholder">⟡</div>
-      <div class="collection-overlay"><div class="collection-name">Gold</div><div class="collection-tag">Pure Elegance</div></div>
+      <div class="collection-img-placeholder">
+        <div class="collection-icon">⟡</div>
+        <div class="collection-placeholder-text">Add gold jewellery image</div>
+      </div>
+      <div class="collection-overlay">
+        <div class="collection-name">Gold Jewellery</div>
+        <div class="collection-tag">22K & 18K Collections</div>
+      </div>
     </div>
     <div class="collection-card">
-      <div class="collection-img-placeholder">◈</div>
-      <div class="collection-overlay"><div class="collection-name">Bespoke</div><div class="collection-tag">Custom Crafted</div></div>
+      <div class="collection-img-placeholder">
+        <div class="collection-icon">◈</div>
+        <div class="collection-placeholder-text">Add bespoke image</div>
+      </div>
+      <div class="collection-overlay">
+        <div class="collection-name">Bespoke Designs</div>
+        <div class="collection-tag">Your Vision, Our Craft</div>
+      </div>
+    </div>
+    <div class="collection-card">
+      <div class="collection-img-placeholder">
+        <div class="collection-icon">❋</div>
+        <div class="collection-placeholder-text">Add everyday jewellery image</div>
+      </div>
+      <div class="collection-overlay">
+        <div class="collection-name">Everyday Elegance</div>
+        <div class="collection-tag">Lightweight & Modern</div>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="about-strip" id="about">
+<div class="about-strip" id="about">
   <div class="about-left fade-up">
     <div class="section-eyebrow">Our Story</div>
     <h2 class="section-title" style="color:#fff;">A Legacy of <em>Brilliance</em></h2>
-    <p class="about-desc">For over two decades, Shiva Gems & Jewels has been a trusted name in fine jewellery in Karol Bagh. We believe every piece of jewellery is a lifelong memory.</p>
-    <a href="https://wa.me/919811076800" class="btn-primary">Connect on WhatsApp</a>
+    <p class="about-desc">For over two decades, Shiva Gems & Jewels has been the most trusted name in fine jewellery at Karol Bagh. We believe that jewellery is not just adornment — it is memory, identity, and love made tangible.</p>
+    <a href="#visit" class="btn-primary">Visit Our Store</a>
+    <div class="about-pillars">
+      <div class="pillar"><div class="pillar-title">Certified Quality</div><div class="pillar-text">Every diamond and gemstone comes with certified authenticity and purity documentation.</div></div>
+      <div class="pillar"><div class="pillar-title">Custom Craftsmanship</div><div class="pillar-text">Your dream design, executed by master craftsmen with decades of expertise.</div></div>
+      <div class="pillar"><div class="pillar-title">Transparent Pricing</div><div class="pillar-text">No hidden costs. Fair, honest pricing with complete making-charge transparency.</div></div>
+      <div class="pillar"><div class="pillar-title">Lifetime Support</div><div class="pillar-text">Free cleaning, resizing, and maintenance for all jewellery purchased from us.</div></div>
+    </div>
   </div>
-  <div style="background: #1a0820; display: flex; align-items: center; justify-content: center; padding: 40px;">
-    <p style="font-family: 'Cormorant Garamond'; font-style: italic; color: var(--rose-light); font-size: 24px; text-align: center;">"Jewellery is memory made tangible."</p>
+  <div class="about-right">
+    <div class="about-right-content">
+      <p class="about-quote">"We don't just sell jewellery. We help you find the piece that will be remembered for generations."</p>
+      <p class="about-quote-attr">— Shiva Gems & Jewels, Karol Bagh</p>
+    </div>
   </div>
-</section>
+</div>
 
-<section id="visit" style="text-align: center;">
-  <div class="section-eyebrow" style="justify-content: center;">Visit Our Store</div>
-  <h2 class="section-title">Experience the <em>Brilliance</em></h2>
+<section class="visit-cta" id="visit">
+  <div style="padding-top:40px;"></div>
+  <div class="section-eyebrow" style="justify-content:center;"><span style="display:block;width:30px;height:1px;background:var(--rose-gold);"></span>&nbsp;Come See Us&nbsp;<span style="display:block;width:30px;height:1px;background:var(--rose-gold);"></span></div>
+  <h2 class="visit-title">Experience the <em>Brilliance</em><br>In Person</h2>
+  <p class="visit-desc">Walk into our store at Karol Bagh and let our experts guide you to the perfect piece. No appointments necessary — but we love to prepare for you.</p>
   <div class="visit-info">
     <div class="visit-info-item"><div class="info-label">Location</div><div class="info-value">Karol Bagh, New Delhi</div></div>
-    <div class="visit-info-item"><div class="info-label">Hours</div><div class="info-value">11am – 8pm</div></div>
-    <div class="visit-info-item"><div class="info-label">WhatsApp</div><div class="info-value">+91 98110 76800</div></div>
+    <div class="visit-info-item"><div class="info-label">Store Hours</div><div class="info-value">Mon – Sat, 11am – 8pm</div></div>
+    <div class="visit-info-item"><div class="info-label">Call / WhatsApp</div><div class="info-value"><a href="tel:+919811076800">+91 98110 76800</a></div></div>
+    <div class="visit-info-item"><div class="info-label">Follow Us</div><div class="info-value"><a href="#">@shivagemsandjewels</a></div></div>
   </div>
-  <a href="https://wa.me/919811076800" class="btn-dark">Send a Message</a>
+  <div class="cta-group">
+    <a href="https://wa.me/919811076800" class="btn-dark">WhatsApp Us</a>
+    <a href="https://maps.google.com" class="btn-outline-dark">Get Directions</a>
+  </div>
 </section>
 
 <footer>
-  <p>© 2025 Shiva Gems & Jewels. Karol Bagh, New Delhi.</p>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand">Shiva Gems & Jewels</div>
+      <p class="footer-tagline">Exclusive Jewellery Store · Karol Bagh, New Delhi. Trusted by thousands of families across Delhi for over two decades.</p>
+    </div>
+    <div>
+      <div class="footer-heading">Collections</div>
+      <ul class="footer-links">
+        <li><a href="#">Diamond Jewellery</a></li>
+        <li><a href="#">Gold Jewellery</a></li>
+        <li><a href="#">Bridal Sets</a></li>
+        <li><a href="#">Custom Bespoke</a></li>
+        <li><a href="#">Everyday Elegance</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-heading">Visit Us</div>
+      <ul class="footer-links">
+        <li><a href="#">Karol Bagh, New Delhi</a></li>
+        <li><a href="#">Mon – Sat · 11am–8pm</a></li>
+        <li><a href="#">+91 98110 76800</a></li>
+        <li><a href="#">Instagram</a></li>
+        <li><a href="#">Google Maps</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2025 Shiva Gems & Jewels. All rights reserved. Karol Bagh, New Delhi.</div>
+    <div class="footer-social">
+      <a href="#" class="social-link">IG</a>
+      <a href="#" class="social-link">WA</a>
+      <a href="#" class="social-link">FB</a>
+    </div>
+  </div>
 </footer>
 
 <script>
@@ -192,10 +329,8 @@
     entries.forEach(entry => {
       if (entry.isIntersecting) entry.target.classList.add('visible');
     });
-  }, { threshold: 0.1 });
+  }, { threshold: 0.15 });
   document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 </script>
-</body>
-</html>
 </body>
 </html>
