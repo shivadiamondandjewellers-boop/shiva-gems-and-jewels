@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shiva Gems & Jewels – Exclusive Jewellery Store, Karol Bagh Delhi</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --deep-plum: #2A0E2E;
+    --rose-gold: #C9977A;
+    --rose-light: #E8C4B0;
+    --cream: #FAF5EF;
+    --charcoal: #1A1A1A;
+    --border: rgba(201,151,122,0.3);
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Montserrat', sans-serif; background: var(--cream); color: var(--charcoal); overflow-x: hidden; }
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 18px 60px; background: rgba(42,14,46,0.96); backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+  .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 600; color: var(--rose-gold); letter-spacing: 3px; text-transform: uppercase; }
+  .nav-cta { border: 1px solid var(--rose-gold); color: var(--rose-gold); padding: 8px 22px; font-size: 10px; letter-spacing: 2px; text-transform: uppercase; text-decoration: none; transition: 0.3s; }
+  .nav-cta:hover { background: var(--rose-gold); color: var(--deep-plum); }
+  .hero { min-height: 100vh; background: var(--deep-plum); display: flex; align-items: center; justify-content: center; text-align: center; color: #fff; padding: 120px 20px; }
+  .hero-h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(40px, 8vw, 80px); font-weight: 300; margin-bottom: 20px; }
+  .hero-h1 em { font-style: italic; color: var(--rose-gold); }
+  .btn-primary { background: var(--rose-gold); color: var(--deep-plum); padding: 16px 40px; text-decoration: none; text-transform: uppercase; font-size: 11px; letter-spacing: 2px; font-weight: 600; display: inline-block; margin-top: 30px; }
+  footer { background: var(--charcoal); color: rgba(255,255,255,0.5); padding: 40px; text-align: center; font-size: 12px; }
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-logo">Shiva Gems & Jewels</div>
+  <a href="https://wa.me/919811076800" class="nav-cta">WhatsApp Us</a>
+</nav>
+
+<section class="hero">
+  <div>
+    <div style="font-size: 10px; letter-spacing: 4px; color: var(--rose-gold); margin-bottom: 20px; text-transform: uppercase;">Karol Bagh, New Delhi</div>
+    <h1 class="hero-h1">Jewels That Tell Your<br><em>Story</em></h1>
+    <p style="color: var(--rose-light); font-family: 'Cormorant Garamond'; font-size: 20px;">Handcrafted Elegance for Generations.</p>
+    <a href="https://wa.me/919811076800" class="btn-primary">Connect with us</a>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Shiva Gems & Jewels. Karol Bagh, New Delhi.</p>
+</footer>
+</body>
+</html>
