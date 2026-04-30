@@ -1,1 +1,0 @@
-# shiva-gems-and-jewels
